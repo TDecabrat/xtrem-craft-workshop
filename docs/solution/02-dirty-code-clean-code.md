@@ -16,6 +16,7 @@ Pour nous :
 - Failles de sécurité évidentes : SQL Injection, ...
 - Code mort
 - #TODO laissés, commentaires inutiles
+- mauvaises gestion des exceptions
 
 ## Qu'est-ce que du code propre ?
 
@@ -34,3 +35,6 @@ Pour nous :
 - Découpage de méthodes trop longues
 - Du code testé
 - Du code optimisé, rapide, fonctionnel
+- normes de codage respectées
+- librairies récentes
+- séparation des responsabilités
