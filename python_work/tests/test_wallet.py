@@ -79,17 +79,17 @@ class TestWallet:
         wallet3.add_money(curr_krw, amount_krw)
 
         # Act
-        money_eur_wal1 : int = wallet1.get_sums_in_currency(curr_eur)
-        money_usd_wal1 : int = wallet1.get_sums_in_currency(curr_usd)
-        money_krw_wal1 : int = wallet1.get_sums_in_currency(curr_krw)
+        money_eur_wal1 : float = wallet1.get_sums_in_currency(curr_eur)
+        money_usd_wal1 : float = wallet1.get_sums_in_currency(curr_usd)
+        money_krw_wal1 : float = wallet1.get_sums_in_currency(curr_krw)
 
-        money_eur_wal2 : int = wallet2.get_sums_in_currency(curr_eur)
-        money_usd_wal2 : int = wallet2.get_sums_in_currency(curr_usd)
-        money_krw_wal2 : int = wallet2.get_sums_in_currency(curr_krw)
+        money_eur_wal2 : float = wallet2.get_sums_in_currency(curr_eur)
+        money_usd_wal2 : float = wallet2.get_sums_in_currency(curr_usd)
+        money_krw_wal2 : float = wallet2.get_sums_in_currency(curr_krw)
 
-        money_eur_wal3 : int = wallet3.get_sums_in_currency(curr_eur)
-        money_usd_wal3 : int = wallet3.get_sums_in_currency(curr_usd)
-        money_krw_wal3 : int = wallet3.get_sums_in_currency(curr_krw)
+        money_eur_wal3 : float = wallet3.get_sums_in_currency(curr_eur)
+        money_usd_wal3 : float = wallet3.get_sums_in_currency(curr_usd)
+        money_krw_wal3 : float = wallet3.get_sums_in_currency(curr_krw)
 
 
         # Assert
