@@ -15,7 +15,6 @@ jobs:
       - name: Run simple code
         run: python -c 'import math; print(math.factorial(5))' #ici, on peut call un fichier de test. Mais à voir comment faire pour éxécuter l'entièreté du dossier tess
 
-jobs:
   Pylint-and-Pytest-build:
 
     runs-on: ubuntu-latest
