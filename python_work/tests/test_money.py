@@ -1,9 +1,10 @@
 """The tests for the money"""
-from python_work.src.currency import Currency
-from python_work.src.money_calculator import MoneyCalculator
+from ..src.currency import Currency
+from ..src.money_calculator import MoneyCalculator
 
 class TestMoney:
     """The tests for the money"""
+
     def test_add_in_usd_returns_value(self):
         """the test to add money from a different currency"""
         #Arrange

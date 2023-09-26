@@ -25,7 +25,7 @@ class Bank:
         :param currency2: the currency to convert into
         :param rate: the rate of convertion
         """
-        bank = Bank({})
+        bank : Bank = Bank({})
         bank.add_echange_rate(currency1, currency2, rate)
 
         return bank

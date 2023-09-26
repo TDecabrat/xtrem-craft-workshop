@@ -2,9 +2,9 @@
 import pytest
 import re
 
-from python_work.src.bank import Bank
-from python_work.src.currency import Currency
-from python_work.src.missing_exchange_rate_error import MissingExchangeRateError
+from ..src.bank import Bank
+from ..src.currency import Currency
+from ..src.missing_exchange_rate_error import MissingExchangeRateError
 
 
 class TestBank:
