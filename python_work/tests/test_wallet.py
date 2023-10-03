@@ -17,7 +17,7 @@ class TestWallet:
         amount3 : int = 5
         amount0 : int = 0
         bank : Bank = Bank()
-        wallet : Wallet = Wallet(bank)
+        wallet : Wallet = Wallet("Trevor", bank)
 
         # Act
         wallet.add_money(curr, amount)
