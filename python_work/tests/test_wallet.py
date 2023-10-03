@@ -91,7 +91,10 @@ class TestWallet:
         money_usd_wal3 : float = wallet3.get_sums_in_currency(curr_usd)
         money_krw_wal3 : float = wallet3.get_sums_in_currency(curr_krw)
 
-
+        print(f"money_eur_wal1 : {money_eur_wal1}")
+        print(wallet1.get_amount_for_currency(curr_eur))
+        print(wallet1.get_amount_for_currency(curr_usd))
+        print(wallet1.get_amount_for_currency(curr_krw))
         # Assert
         assert money_eur_wal1 == amount_eur
         assert money_usd_wal1 == bank.convert(amount_eur, curr_eur, curr_usd)

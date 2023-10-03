@@ -8,3 +8,7 @@ class Currency(Enum):
     USD = "USD"
     EUR = "EUR"
     KRW = "KRW"
+
+    def __eq__(self, other):
+        """The equal function"""
+        return self.value == other.value
