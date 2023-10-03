@@ -1,8 +1,8 @@
 """Tests for the wallet"""
+from copy import deepcopy
 from ..src.currency import Currency
 from ..src.bank import Bank
 from ..src.wallet import Wallet
-from copy import deepcopy
 
 class TestWallet:
     """Tests for the wallet"""
@@ -48,11 +48,11 @@ class TestWallet:
         """Checks if the evaluated money is correct"""
         # Arrange
         rate_eur_usd : float = 1.2
-        rate_usd_eur : float = 0.82
+        rate_usd_eur : float = 1 / rate_eur_usd
         rate_usd_krw : float = 1100
-        rate_krw_usd : float = 0.0009 
+        rate_krw_usd : float = 1 / rate_usd_krw
         rate_eur_krw : float = 1344
-        rate_krw_eur : float = 0.00073
+        rate_krw_eur : float = 1 / rate_eur_krw
 
         curr_eur : Currency = Currency.EUR
         curr_usd : Currency = Currency.USD
@@ -111,4 +111,3 @@ class TestWallet:
                                   + bank.convert(amount_krw, curr_krw, curr_usd))
         assert money_krw_wal3 == (amount_krw + bank.convert(amount_eur, curr_eur, curr_krw)
                                   + bank.convert(amount_usd, curr_usd, curr_krw))
-

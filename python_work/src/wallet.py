@@ -1,6 +1,7 @@
-from typing import Dict
+from typing import List
 from .currency import Currency
 from .bank import Bank
+from .money import Money
 from .missing_exchange_rate_error import MissingExchangeRateError
 
 class Wallet:
@@ -8,38 +9,43 @@ class Wallet:
 
     def __init__(self, bank) -> None:
         """The initial function"""
-        self._wallets: Dict[Currency, float] = {}
-        for currency in Currency:
-            self._wallets[currency] = 0
+        self._moneys: List[Money] = []
 
         self.linked_bank: Bank = bank
 
     def add_money(self, currency, val) -> None:
         """Adds money in the wallet from a certain currency"""
-        if currency not in Currency:
-            print("Error : This currency is not recognized by the system.")
+
+        money = self.get_amount_for_currency(currency)
+        if money is None:
+            self._moneys.append(Money(val, currency))
         else:
-            self._wallets[currency] += val
+            money.add_money(val)
+
+        return
 
     def get_amount_for_currency(self, currency) -> float:
         """Gives the amount of money stored for a currency"""
-        return self._wallets[currency]
+        for money in self._moneys:
+            if money.currency == currency:
+                return money
+        return None
 
     def get_sums_in_currency(self, target_currency) -> float:
         """Gets the sum"""
+        sum_currencies : float = 0
         if target_currency in Currency:
-            sum_currencies : float = 0
-            for curr_type in self._wallets.copy():
+            for money in self._moneys.copy():
                 try:
-                    if curr_type != target_currency :
-                        sum_currencies += self.linked_bank.convert(self._wallets[curr_type],
-                                                                curr_type, target_currency)
+                    if money.currency != target_currency :
+                        sum_currencies += self.linked_bank.convert(money.amount,
+                                                                money.currency, target_currency)
                     else :
-                        sum_currencies += self._wallets[curr_type]
+                        sum_currencies += money.amount
                 except MissingExchangeRateError:
-                    print(f"We couldn't convert the amount of money from {curr_type} " /
+                    print(f"We couldn't convert the amount of money from {money.currency} " /
                           f"to {target_currency}, and thus ignored it.")
-            return sum_currencies
         else:
             print("Currency given was not found.")
-            return None
+            sum_currencies = None
+        return sum_currencies

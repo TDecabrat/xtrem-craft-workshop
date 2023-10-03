@@ -1,6 +1,5 @@
 """Tests for the bank"""
 import pytest
-import re
 
 from ..src.bank import Bank
 from ..src.currency import Currency
