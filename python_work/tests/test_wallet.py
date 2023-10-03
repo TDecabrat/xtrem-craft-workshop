@@ -92,7 +92,6 @@ class TestWallet:
         money_krw_wal3 : float = wallet3.get_sums_in_currency(curr_krw)
 
         print(f"money_eur_wal1 : {money_eur_wal1}")
-        print(wallet1.name)
         print(wallet1.get_amount_for_currency(curr_eur))
         print(wallet1.get_amount_for_currency(curr_usd))
         print(wallet1.get_amount_for_currency(curr_krw))
