@@ -2,6 +2,7 @@
 from ..src.currency import Currency
 from ..src.bank import Bank
 from ..src.wallet import Wallet
+from copy import deepcopy
 
 class TestWallet:
     """Tests for the wallet"""
@@ -17,7 +18,7 @@ class TestWallet:
         amount3 : int = 5
         amount0 : int = 0
         bank : Bank = Bank()
-        wallet : Wallet = Wallet("Trevor", bank)
+        wallet : Wallet = Wallet(bank)
 
         # Act
         wallet.add_money(curr, amount)
@@ -68,20 +69,13 @@ class TestWallet:
         amount_usd : float = 9
         amount_krw : float = 7
 
-        wallet1 : Wallet = Wallet("Walter", bank)
+        wallet1 : Wallet = Wallet(bank)
         wallet1.add_money(curr_eur, amount_eur)
 
-        wallet2 : Wallet = Wallet("George", bank)
-        wallet2.add_money(curr_eur, amount_eur)
+        wallet2 : Wallet = deepcopy(wallet1)
         wallet2.add_money(curr_usd, amount_usd)
-        print(wallet1.name)
-        print(wallet1.get_amount_for_currency(curr_eur))
-        print(wallet1.get_amount_for_currency(curr_usd))
-        print(wallet1.get_amount_for_currency(curr_krw))
 
-        wallet3 : Wallet = Wallet("Lara", bank)
-        wallet3.add_money(curr_eur, amount_eur)
-        wallet3.add_money(curr_usd, amount_usd)
+        wallet3 : Wallet = deepcopy(wallet2)
         wallet3.add_money(curr_krw, amount_krw)
 
         # Act

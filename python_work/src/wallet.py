@@ -5,13 +5,11 @@ from .missing_exchange_rate_error import MissingExchangeRateError
 
 class Wallet:
     """The wallet"""
-    name = None
     _wallets: Dict[Currency, float] = {}
     linked_bank: Bank = None
 
-    def __init__(self, name, bank) -> None:
+    def __init__(self, bank) -> None:
         """The initial function"""
-        self.name = name
         for currency in Currency:
             self._wallets[currency] = 0
 
