@@ -10,6 +10,8 @@ class Wallet:
     def __init__(self, bank : Bank) -> None:
         """The initial function"""
         self._moneys: List[Money] = []
+        for curr in Currency:
+            self._moneys.append(Money(0, curr))
 
         self.linked_bank: Bank = bank
 
@@ -21,8 +23,6 @@ class Wallet:
             self._moneys.append(Money(val, currency))
         else:
             money.add_money(val)
-
-        return
 
     def get_amount_for_currency(self, currency : Currency) -> Money:
         """Gives the amount of money stored for a currency"""
