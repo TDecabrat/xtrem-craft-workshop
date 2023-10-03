@@ -6,7 +6,6 @@ from .missing_exchange_rate_error import MissingExchangeRateError
 
 class Bank:
     """The bank"""
-    _exchange_rate: Dict[str, float] = {}
 
     def __init__(self, exchange_rate = {}) -> None:
         """
@@ -14,7 +13,7 @@ class Bank:
 
         :param exchange_rate: the exchange rate
         """
-        self._exchange_rate = exchange_rate
+        self._exchange_rate : Dict[str, float] = exchange_rate
 
     @staticmethod
     def create(currency1: Currency, currency2: Currency, rate: float) -> "Bank":
