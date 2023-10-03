@@ -7,16 +7,16 @@ from .missing_exchange_rate_error import MissingExchangeRateError
 class Wallet:
     """The wallet"""
 
-    def __init__(self, bank) -> None:
+    def __init__(self, bank : Bank) -> None:
         """The initial function"""
         self._moneys: List[Money] = []
 
         self.linked_bank: Bank = bank
 
-    def add_money(self, currency, val) -> None:
+    def add_money(self, currency : Currency, val : float) -> None:
         """Adds money in the wallet from a certain currency"""
 
-        money = self.get_amount_for_currency(currency)
+        money : Money = self.get_amount_for_currency(currency)
         if money is None:
             self._moneys.append(Money(val, currency))
         else:
@@ -24,14 +24,14 @@ class Wallet:
 
         return
 
-    def get_amount_for_currency(self, currency) -> float:
+    def get_amount_for_currency(self, currency : Currency) -> Money:
         """Gives the amount of money stored for a currency"""
         for money in self._moneys:
             if money.currency == currency:
                 return money
         return None
 
-    def get_sums_in_currency(self, target_currency) -> float:
+    def get_sums_in_currency(self, target_currency : Currency) -> float:
         """Gets the sum"""
         sum_currencies : float = 0
         if target_currency in Currency:

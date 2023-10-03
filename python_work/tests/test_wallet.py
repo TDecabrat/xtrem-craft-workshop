@@ -3,6 +3,7 @@ from copy import deepcopy
 from ..src.currency import Currency
 from ..src.bank import Bank
 from ..src.wallet import Wallet
+from ..src.money import Money
 
 class TestWallet:
     """Tests for the wallet"""
@@ -22,14 +23,14 @@ class TestWallet:
 
         # Act
         wallet.add_money(curr, amount)
-        money_eur : float = wallet.get_amount_for_currency(curr)
-        money_usd : float = wallet.get_amount_for_currency(curr2)
-        money_krw : float = wallet.get_amount_for_currency(curr3)
+        money_eur : Money = wallet.get_amount_for_currency(curr)
+        money_usd : Money = wallet.get_amount_for_currency(curr2)
+        money_krw : Money = wallet.get_amount_for_currency(curr3)
 
         # Assert
-        assert money_eur == 10
-        assert money_usd == 0
-        assert money_krw == 0
+        assert money_eur.amount == 10
+        assert money_usd.amount == 0
+        assert money_krw.amount == 0
 
         # Act
         wallet.add_money(curr, amount2)
@@ -40,9 +41,9 @@ class TestWallet:
         money_krw = wallet.get_amount_for_currency(curr3)
 
         # Assert
-        assert money_eur == 25
-        assert money_usd == 5
-        assert money_krw == 0
+        assert money_eur.amount == 25
+        assert money_usd.amount == 5
+        assert money_krw.amount == 0
 
     def test_evaluate_money_in_one_devise(self):
         """Checks if the evaluated money is correct"""
