@@ -32,8 +32,11 @@ class Wallet:
             sum_currencies : float = 0
             for curr_type in self._wallets.copy():
                 try:
-                    sum_currencies += self.linked_bank.convert(self._wallets[curr_type],
-                                                               curr_type, target_currency)
+                    if curr_type != target_currency :
+                        sum_currencies += self.linked_bank.convert(self._wallets[curr_type],
+                                                                curr_type, target_currency)
+                    else :
+                        sum_currencies += self._wallets[curr_type]
                 except MissingExchangeRateError:
                     print(f"We couldn't convert the amount of money from {curr_type} " /
                           f"to {target_currency}, and thus ignored it.")

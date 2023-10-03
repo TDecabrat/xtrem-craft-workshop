@@ -49,7 +49,7 @@ class TestWallet:
         rate_eur_usd : float = 1.2
         rate_usd_eur : float = 0.82
         rate_usd_krw : float = 1100
-        rate_krw_usd : float = 0.0009
+        rate_krw_usd : float = 0.0009 
         rate_eur_krw : float = 1344
         rate_krw_eur : float = 0.00073
 
