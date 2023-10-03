@@ -65,3 +65,8 @@ class Money:
         Shows the amount of money
         """
         print(f"{self.amount} {self.currency}")
+
+    def __eq__(self, obj):
+        return (isinstance(obj, Money) and
+                obj.amount == self.amount and
+                obj.currency == self.currency)
