@@ -68,12 +68,14 @@ class TestWallet:
         amount_usd : float = 9
         amount_krw : float = 7
 
-        wallet1 : Wallet = Wallet(bank)
+        wallet1 : Wallet = Wallet("Walter", bank)
         wallet1.add_money(curr_eur, amount_eur)
-        wallet2 : Wallet = Wallet(bank)
+
+        wallet2 : Wallet = Wallet("George", bank)
         wallet2.add_money(curr_eur, amount_eur)
         wallet2.add_money(curr_usd, amount_usd)
-        wallet3 : Wallet = Wallet(bank)
+
+        wallet3 : Wallet = Wallet("Lara", bank)
         wallet3.add_money(curr_eur, amount_eur)
         wallet3.add_money(curr_usd, amount_usd)
         wallet3.add_money(curr_krw, amount_krw)
@@ -92,6 +94,7 @@ class TestWallet:
         money_krw_wal3 : float = wallet3.get_sums_in_currency(curr_krw)
 
         print(f"money_eur_wal1 : {money_eur_wal1}")
+        print(wallet1.name)
         print(wallet1.get_amount_for_currency(curr_eur))
         print(wallet1.get_amount_for_currency(curr_usd))
         print(wallet1.get_amount_for_currency(curr_krw))
