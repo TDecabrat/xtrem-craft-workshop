@@ -74,6 +74,10 @@ class TestWallet:
         wallet2 : Wallet = Wallet("George", bank)
         wallet2.add_money(curr_eur, amount_eur)
         wallet2.add_money(curr_usd, amount_usd)
+        print(wallet1.name)
+        print(wallet1.get_amount_for_currency(curr_eur))
+        print(wallet1.get_amount_for_currency(curr_usd))
+        print(wallet1.get_amount_for_currency(curr_krw))
 
         wallet3 : Wallet = Wallet("Lara", bank)
         wallet3.add_money(curr_eur, amount_eur)
@@ -114,3 +118,4 @@ class TestWallet:
                                   + bank.convert(amount_krw, curr_krw, curr_usd))
         assert money_krw_wal3 == (amount_krw + bank.convert(amount_eur, curr_eur, curr_krw)
                                   + bank.convert(amount_usd, curr_usd, curr_krw))
+
