@@ -10,11 +10,10 @@ class TestMoneyCalculator:
         """the test to add money from a different currency"""
         #Arrange
         amount : Money = Money(5, Currency.USD)
-        curr : Currency = Currency.USD
         amount2 : Money = Money(10, Currency.USD)
 
         #Act
-        res = MoneyCalculator.add(amount, curr, amount2)
+        res = MoneyCalculator.add(amount, amount2)
 
         #Assert
         assert res is not None
@@ -25,11 +24,10 @@ class TestMoneyCalculator:
         """the test for checking that multipling money works"""
         #Arrange
         amount : Money = Money(5, Currency.EUR)
-        curr : Currency = Currency.EUR
         amount2 : int = 2
 
         #Act
-        res = MoneyCalculator.times(amount, curr, amount2)
+        res = MoneyCalculator.times(amount, amount2)
 
         #assert
         assert res == 10
@@ -39,11 +37,10 @@ class TestMoneyCalculator:
         #Arrange
 
         amount : Money = Money(4002, Currency.KRW)
-        curr : Currency = Currency.KRW
         amount2 : int = 4
 
         #Act
-        res = MoneyCalculator.divide(amount, curr, amount2)
+        res = MoneyCalculator.divide(amount, amount2)
 
         #assert
         assert res == 1000.5
