@@ -105,7 +105,7 @@ class TestBank:
         curr3 : Currency = Currency.KRW
         amount : int = 10
         bank : Bank = (BankDataBuilder()
-                       .with_pivot_currency(curr)
+                       .with_pivot_currency(curr2)
                        .with_rates_for_currencies(curr, curr2, rate_eur_usd)
                        .with_rates_for_currencies(curr2, curr3, rate_usd_krw)
                        .build())
