@@ -49,22 +49,16 @@ class TestWallet:
         """Checks if the evaluated money is correct"""
         # Arrange
         rate_eur_usd : float = 1.2
-        rate_usd_eur : float = 1 / rate_eur_usd
         rate_usd_krw : float = 1100
-        rate_krw_usd : float = 1 / rate_usd_krw
         rate_eur_krw : float = 1344
-        rate_krw_eur : float = 1 / rate_eur_krw
 
         curr_eur : Currency = Currency.EUR
         curr_usd : Currency = Currency.USD
         curr_krw : Currency = Currency.KRW
 
         bank : Bank = Bank.create(curr_eur, curr_usd, rate_eur_usd) # EUR -> USD
-        bank.add_echange_rate(curr_usd, curr_eur, rate_usd_eur) # USD -> EUR
         bank.add_echange_rate(curr_usd, curr_krw, rate_usd_krw) # USD -> KRW
-        bank.add_echange_rate(curr_krw, curr_usd, rate_krw_usd) # KRW -> USD
         bank.add_echange_rate(curr_eur, curr_krw, rate_eur_krw) # EUR -> KRW
-        bank.add_echange_rate(curr_krw, curr_eur, rate_krw_eur) # KRW -> EUR
 
         amount_eur : float = 10
         amount_usd : float = 9

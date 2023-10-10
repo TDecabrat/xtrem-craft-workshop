@@ -1,3 +1,5 @@
+"""The wallet"""
+
 from typing import List
 from .currency import Currency
 from .bank import Bank

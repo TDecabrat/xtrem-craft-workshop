@@ -83,3 +83,28 @@ class TestBank:
 
         #Assert
         assert res2 == 13
+
+    def test_convert_back(self):
+        """
+        Tests if converting back and forth gives the correct amount of money
+        """
+        #Arrange
+        rate_eur_usd : float = 1.2
+        rate_usd_krw : float = 1100
+        curr : Currency = Currency.EUR
+        curr2 : Currency = Currency.USD
+        curr3 : Currency = Currency.USD
+        amount : int = 10
+        bank : Bank = Bank.create(curr, curr2, rate_eur_usd)
+        bank = bank.create(curr, curr3, rate_usd_krw)
+
+        #Act
+        res = bank.convert(amount, curr, curr2)
+        res = bank.convert(res, curr2, curr)
+
+        res2 = bank.convert(amount, curr, curr3)
+        res2 = bank.convert(amount, curr3, curr)
+
+        #Assert
+        assert res == amount
+        assert res2 == amount
