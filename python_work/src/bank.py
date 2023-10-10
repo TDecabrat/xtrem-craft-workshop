@@ -8,14 +8,14 @@ from .missing_exchange_rate_error import MissingExchangeRateError
 class Bank:
     """The bank"""
 
-    def __init__(self, exchange_rate : Dict = {}) -> None:
+    def __init__(self, exchange_rate : Dict = {}, pivot_curr : Currency = None) -> None:
         """
         The initial function
 
         :param exchange_rate: the exchange rate
         """
         self._exchange_rate : Dict[str, float] = exchange_rate
-        self.pivot_curr : Currency = None
+        self.pivot_curr : Currency = pivot_curr
 
     @staticmethod
     def create(currency1: Currency, currency2: Currency, rate: float) -> "Bank":
@@ -79,6 +79,8 @@ class Bank:
     def add_pivot_currency(self, curr : Currency) -> bool:
         """
         Adds (or changes) the pivot currency
+
+        :param curr: the pivot currency
         """
         check : bool = False
         if curr in Currency:

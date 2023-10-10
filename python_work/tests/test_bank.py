@@ -96,7 +96,8 @@ class TestBank:
         curr3 : Currency = Currency.USD
         amount : int = 10
         bank : Bank = Bank.create(curr, curr2, rate_eur_usd)
-        bank = bank.create(curr, curr3, rate_usd_krw)
+        bank = bank.create(curr2, curr3, rate_usd_krw)
+        bank.add_pivot_currency(curr)
 
         #Act
         res = bank.convert(amount, curr, curr2)
