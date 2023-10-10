@@ -15,6 +15,7 @@ class Bank:
         :param exchange_rate: the exchange rate
         """
         self._exchange_rate : Dict[str, float] = exchange_rate
+        self.pivot_curr : Currency = None
 
     @staticmethod
     def create(currency1: Currency, currency2: Currency, rate: float) -> "Bank":
@@ -39,6 +40,7 @@ class Bank:
         :param rate: the rate of convertion
         """
         self._exchange_rate[f'{currency1.value}->{currency2.value}'] = rate
+        self._exchange_rate[f'{currency2.value}->{currency1.value}'] = 1/rate
 
     def convert_money(self, amount: Money, currency1: Currency, currency2: Currency) -> float:
         """
@@ -58,13 +60,28 @@ class Bank:
         :param currency1: the initial currency
         :param currency2: the currency to convert into
         """
-        if not (currency1.value == currency2.value or
-                f'{currency1.value}->{currency2.value}' in self._exchange_rate):
-            raise MissingExchangeRateError(currency1, currency2)
-
         converted_amount : float = 0
         if currency1.value == currency2.value:
             converted_amount = amount
+        elif f'{currency1.value}->{currency2.value}' in self._exchange_rate:
+            converted_amount = (amount *
+                                self._exchange_rate[f'{currency1.value}->{currency2.value}'])
+        elif (self.pivot_curr and
+              (f'{currency1.value}->{self.pivot_curr}' in self._exchange_rate) and
+              f'{self.pivot_curr}->{currency2.value}' in self._exchange_rate):
+            converted_amount = (amount *
+                                self._exchange_rate[f'{currency1.value}->{self.pivot_curr}'] *
+                                self._exchange_rate[f'{self.pivot_curr}->{currency2.value}'])
         else:
-            converted_amount = amount * self._exchange_rate[f'{currency1.value}->{currency2.value}']
+            raise MissingExchangeRateError(currency1, currency2)
         return converted_amount
+
+    def add_pivot_currency(self, curr : Currency) -> bool:
+        """
+        Adds (or changes) the pivot currency
+        """
+        check : bool = False
+        if curr in Currency:
+            self.pivot_curr = curr
+            check = True
+        return check
