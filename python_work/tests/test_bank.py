@@ -103,7 +103,7 @@ class TestBank:
         res = bank.convert(res, curr2, curr)
 
         res2 = bank.convert(amount, curr, curr3)
-        res2 = bank.convert(amount, curr3, curr)
+        res2 = bank.convert(res2, curr3, curr)
 
         #Assert
         assert res == amount
