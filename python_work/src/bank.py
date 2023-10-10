@@ -67,8 +67,8 @@ class Bank:
             converted_amount = (amount *
                                 self._exchange_rate[f'{currency1.value}->{currency2.value}'])
         elif (self.pivot_curr and
-              (f'{currency1.value}->{self.pivot_curr}' in self._exchange_rate) and
-              f'{self.pivot_curr}->{currency2.value}' in self._exchange_rate):
+              (f'{currency1.value}->{self.pivot_curr.value}' in self._exchange_rate) and
+              f'{self.pivot_curr.value}->{currency2.value}' in self._exchange_rate):
             converted_amount = (amount *
                                 self._exchange_rate[f'{currency1.value}->{self.pivot_curr}'] *
                                 self._exchange_rate[f'{self.pivot_curr}->{currency2.value}'])
