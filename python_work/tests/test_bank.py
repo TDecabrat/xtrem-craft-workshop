@@ -4,6 +4,7 @@ import pytest
 from ..src.bank import Bank
 from ..src.currency import Currency
 from ..src.missing_exchange_rate_error import MissingExchangeRateError
+from .bank_data_builder import BankDataBuilder
 
 
 class TestBank:
@@ -17,7 +18,9 @@ class TestBank:
         curr : Currency = Currency.EUR
         curr2 : Currency = Currency.USD
         amount : int = 10
-        bank : Bank = Bank.create(curr, curr2, rate)
+        bank : Bank = (BankDataBuilder()
+                      .with_rates_for_currencies(curr, curr2, rate)
+                      .build())
 
         #Act
         res = bank.convert(amount, curr, curr2)
@@ -32,7 +35,9 @@ class TestBank:
         curr : Currency = Currency.EUR
         curr2 : Currency = Currency.USD
         amount : int = 10
-        bank : Bank = Bank.create(curr, curr2, rate)
+        bank : Bank = (BankDataBuilder()
+                      .with_rates_for_currencies(curr, curr2, rate)
+                      .build())
 
         #Act
         res = bank.convert(amount, curr, curr)
@@ -48,7 +53,9 @@ class TestBank:
         curr2 : Currency = Currency.USD
         curr3 : Currency = Currency.KRW
         amount : int = 10
-        bank : Bank = Bank.create(curr, curr2, rate)
+        bank : Bank = (BankDataBuilder()
+                      .with_rates_for_currencies(curr, curr2, rate)
+                      .build())
 
         #Act
         with pytest.raises(MissingExchangeRateError) as error:
@@ -66,7 +73,9 @@ class TestBank:
         usd: Currency = Currency.USD
         rate: float = 1.2
         money : int = 10
-        bank: Bank = Bank.create(eur, usd, rate)
+        bank: Bank = (BankDataBuilder()
+                      .with_rates_for_currencies(eur, usd, rate)
+                      .build())
 
         #Act
         res = bank.convert(money, eur, usd)
@@ -95,9 +104,11 @@ class TestBank:
         curr2 : Currency = Currency.USD
         curr3 : Currency = Currency.KRW
         amount : int = 10
-        bank : Bank = Bank.create(curr, curr2, rate_eur_usd)
-        bank = bank.create(curr2, curr3, rate_usd_krw)
-        bank.add_pivot_currency(curr)
+        bank : Bank = (BankDataBuilder()
+                       .with_pivot_currency(curr)
+                       .with_rates_for_currencies(curr, curr2, rate_eur_usd)
+                       .with_rates_for_currencies(curr2, curr3, rate_usd_krw)
+                       .build())
 
         #Act
         res = bank.convert(amount, curr, curr2)
