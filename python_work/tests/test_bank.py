@@ -78,7 +78,7 @@ class TestBank:
         new_rate: float = 1.3
 
         #Act
-        bank.add_echange_rate(eur, usd, new_rate)
+        bank.add_exchange_rate(eur, usd, new_rate)
         res2 = bank.convert(money, eur, usd)
 
         #Assert
@@ -93,7 +93,7 @@ class TestBank:
         rate_usd_krw : float = 1100
         curr : Currency = Currency.EUR
         curr2 : Currency = Currency.USD
-        curr3 : Currency = Currency.USD
+        curr3 : Currency = Currency.KRW
         amount : int = 10
         bank : Bank = Bank.create(curr, curr2, rate_eur_usd)
         bank = bank.create(curr2, curr3, rate_usd_krw)

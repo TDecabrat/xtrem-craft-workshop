@@ -27,11 +27,11 @@ class Bank:
         :param rate: the rate of convertion
         """
         bank : Bank = Bank({})
-        bank.add_echange_rate(currency1, currency2, rate)
+        bank.add_exchange_rate(currency1, currency2, rate)
 
         return bank
 
-    def add_echange_rate(self, currency1: Currency, currency2: Currency, rate: float) -> None:
+    def add_exchange_rate(self, currency1: Currency, currency2: Currency, rate: float) -> None:
         """
         Adds an exchange rate between two currencies.
 
