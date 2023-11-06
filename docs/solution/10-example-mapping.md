@@ -6,11 +6,21 @@
 ```markdown
 ## Titre de l'US (post-it jaunes)
 
+- Convert a money
+- Define Pivot Currency
+- Add an exchange rate
+
 > Question (post-it rouge)
+
+Peut-on transformer l'argent en différentes devises après évaluation ?
 
 ### Règle Métier (post-it bleu)
 
 Exemple: (post-it vert)
+
+- 0 USD -> 0 KRW -> 0 €
+- 10 USD -> ... KRW -> 9.~ €
+- Le portefeuille contient 5 USD et 10 € -> 17 USD
 
 - [ ] 5 USD + 10 EUR = 17 USD
 ```

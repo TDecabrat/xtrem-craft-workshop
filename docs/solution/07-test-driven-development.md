@@ -15,3 +15,6 @@ A partir de quelle taille d'équipe et de projet est-il rentable de faire du tdd
 ## Mob programming
 
 > Qu'avez-vous appris de l'introduction de nouveaux rôles en mob programming ?
+
+Une personne écrit sur son ordinateur, les autres regardent, et réfléchissent aux solutions à proposer, ou donnent des directives à celui/celle qui écrit.
+Il faut aussi faire tourner les rôles, afin que tout le monde dans l'équipe puisse augmenter en compétences.
